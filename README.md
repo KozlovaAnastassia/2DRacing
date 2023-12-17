@@ -14,3 +14,4 @@
 - MVC
 - UserDefault
 - Animation
+- Delegate 
