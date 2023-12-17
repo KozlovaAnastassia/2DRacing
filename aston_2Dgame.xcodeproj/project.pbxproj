@@ -59,6 +59,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D1530EF2B2F8BBA00387CF1 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				5D618F662B0BE48B00E8BF24 /* AppDelegate.swift */,
+				5D618F682B0BE48B00E8BF24 /* SceneDelegate.swift */,
+				5DF902B42B28734900D990E6 /* GeneralConstants.swift */,
+				5DF902C22B28DEA400D990E6 /* StorageManager.swift */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
 		5D618F5A2B0BE48B00E8BF24 = {
 			isa = PBXGroup;
 			children = (
@@ -78,10 +89,7 @@
 		5D618F652B0BE48B00E8BF24 /* aston_2Dgame */ = {
 			isa = PBXGroup;
 			children = (
-				5D618F662B0BE48B00E8BF24 /* AppDelegate.swift */,
-				5D618F682B0BE48B00E8BF24 /* SceneDelegate.swift */,
-				5DF902B42B28734900D990E6 /* GeneralConstants.swift */,
-				5DF902C22B28DEA400D990E6 /* StorageManager.swift */,
+				5D1530EF2B2F8BBA00387CF1 /* Supports */,
 				5D618F7D2B0BE4E500E8BF24 /* RecordsScreen */,
 				5D618F7C2B0BE4D600E8BF24 /* SettingsScreen */,
 				5D618F7B2B0BE4C900E8BF24 /* RaceScreen */,

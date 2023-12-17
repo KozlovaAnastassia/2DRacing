@@ -15,7 +15,7 @@ private extension String {
     static let actionStartGame = "Start the game anyway"
     static let alertAddImage = "Add image"
     static let actionPhoto = "Photos"
-    static let actionCancel = "Cansel"
+    static let actionCancel = "Cancel"
 }
 
 private extension CGFloat {

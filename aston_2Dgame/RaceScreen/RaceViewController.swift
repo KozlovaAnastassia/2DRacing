@@ -60,13 +60,12 @@ final class RaceViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         moveBgDown()
+        startTimer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         raceView.adjustCarViewFrame()
         moveDown()
-        startTimer()
-       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
