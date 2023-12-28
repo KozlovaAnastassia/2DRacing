@@ -54,7 +54,10 @@ final class SettingsViewController: UIViewController {
         setDelegates()
         setTapGesture()
         setNavigationItem()
-        getDataFromUserData()
+        
+        DispatchQueue.main.async {
+            self.getDataFromUserData()
+        }
     }
      
      @objc func pressButtonStartGame() {
