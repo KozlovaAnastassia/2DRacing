@@ -61,10 +61,10 @@ final class SettingsViewController: UIViewController {
     }
      
      @objc func pressButtonStartGame() {
-         if let image = model.image, let name = model.name, let currentLevel = model.currentLevel {
+         if let image = model.image, let name = model.name {
              delegate?.didReceiveData(name: name, image: image.pngData() ?? Data(), id: model.id ?? Int())
-             UserDefaults.standard.set(currentLevel, forKey: GeneralConstants.UDKeys.currentLevel)
-             navigationController?.pushViewController(RaceViewController(gameLevel: currentLevel), animated: true)
+             UserDefaults.standard.set(model.currentLevel, forKey: GeneralConstants.UDKeys.currentLevel)
+             navigationController?.pushViewController(RaceViewController(gameLevel: model.currentLevel ?? "\(LevelsOfgame.easy)"), animated: true)
          } else {
              setAlertNoData()
              settingsView.textField.isUserInteractionEnabled = true
