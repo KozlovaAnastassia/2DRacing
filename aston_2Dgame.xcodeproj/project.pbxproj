@@ -15,15 +15,18 @@
 		5D618F812B0BE74800E8BF24 /* RaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D618F802B0BE74800E8BF24 /* RaceViewController.swift */; };
 		5D618F832B0BE7A100E8BF24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D618F822B0BE7A100E8BF24 /* SettingsViewController.swift */; };
 		5D618F852B0BE7D600E8BF24 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D618F842B0BE7D600E8BF24 /* RecordsViewController.swift */; };
+		5D84B6942B443DA600239199 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B6932B443DA600239199 /* DataStorage.swift */; };
+		5D84B6962B44701C00239199 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B6952B44701C00239199 /* CustomButton.swift */; };
+		5D84B6992B4473F900239199 /* CustomBarriers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B6982B4473F900239199 /* CustomBarriers.swift */; };
+		5D84B69B2B44756C00239199 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B69A2B44756C00239199 /* CustomLabel.swift */; };
+		5D84B69E2B44774300239199 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84B69D2B44774300239199 /* CustomImageView.swift */; };
 		5DA5F4E22B2A30E200B0DBB4 /* RaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA5F4E12B2A30E100B0DBB4 /* RaceModel.swift */; };
-		5DE3E1402B18CBC000E14AE6 /* RecordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE3E13F2B18CBC000E14AE6 /* RecordsModel.swift */; };
 		5DE3E1422B18CD1100E14AE6 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE3E1412B18CD1100E14AE6 /* RecordCell.swift */; };
 		5DF902B52B28734900D990E6 /* GeneralConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF902B42B28734900D990E6 /* GeneralConstants.swift */; };
 		5DF902B72B2874DE00D990E6 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF902B62B2874DE00D990E6 /* StartView.swift */; };
 		5DF902B92B2878D900D990E6 /* RaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF902B82B2878D900D990E6 /* RaceView.swift */; };
 		5DF902BB2B28AB7C00D990E6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF902BA2B28AB7C00D990E6 /* SettingsView.swift */; };
 		5DF902BD2B28B0AC00D990E6 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF902BC2B28B0AC00D990E6 /* SettingModel.swift */; };
-		5DF902C32B28DEA400D990E6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF902C22B28DEA400D990E6 /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,15 +40,18 @@
 		5D618F802B0BE74800E8BF24 /* RaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaceViewController.swift; sourceTree = "<group>"; };
 		5D618F822B0BE7A100E8BF24 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5D618F842B0BE7D600E8BF24 /* RecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		5D84B6932B443DA600239199 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		5D84B6952B44701C00239199 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		5D84B6982B4473F900239199 /* CustomBarriers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarriers.swift; sourceTree = "<group>"; };
+		5D84B69A2B44756C00239199 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		5D84B69D2B44774300239199 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		5DA5F4E12B2A30E100B0DBB4 /* RaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceModel.swift; sourceTree = "<group>"; };
-		5DE3E13F2B18CBC000E14AE6 /* RecordsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsModel.swift; sourceTree = "<group>"; };
 		5DE3E1412B18CD1100E14AE6 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		5DF902B42B28734900D990E6 /* GeneralConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConstants.swift; sourceTree = "<group>"; };
 		5DF902B62B2874DE00D990E6 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		5DF902B82B2878D900D990E6 /* RaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceView.swift; sourceTree = "<group>"; };
 		5DF902BA2B28AB7C00D990E6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5DF902BC2B28B0AC00D990E6 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
-		5DF902C22B28DEA400D990E6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D1530EF2B2F8BBA00387CF1 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				5D618F662B0BE48B00E8BF24 /* AppDelegate.swift */,
+				5D618F682B0BE48B00E8BF24 /* SceneDelegate.swift */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
 		5D618F5A2B0BE48B00E8BF24 = {
 			isa = PBXGroup;
 			children = (
@@ -78,10 +93,8 @@
 		5D618F652B0BE48B00E8BF24 /* aston_2Dgame */ = {
 			isa = PBXGroup;
 			children = (
-				5D618F662B0BE48B00E8BF24 /* AppDelegate.swift */,
-				5D618F682B0BE48B00E8BF24 /* SceneDelegate.swift */,
-				5DF902B42B28734900D990E6 /* GeneralConstants.swift */,
-				5DF902C22B28DEA400D990E6 /* StorageManager.swift */,
+				5D84B6972B4472FE00239199 /* Generals */,
+				5D1530EF2B2F8BBA00387CF1 /* Supports */,
 				5D618F7D2B0BE4E500E8BF24 /* RecordsScreen */,
 				5D618F7C2B0BE4D600E8BF24 /* SettingsScreen */,
 				5D618F7B2B0BE4C900E8BF24 /* RaceScreen */,
@@ -127,9 +140,29 @@
 			children = (
 				5D618F842B0BE7D600E8BF24 /* RecordsViewController.swift */,
 				5DE3E1412B18CD1100E14AE6 /* RecordCell.swift */,
-				5DE3E13F2B18CBC000E14AE6 /* RecordsModel.swift */,
 			);
 			path = RecordsScreen;
+			sourceTree = "<group>";
+		};
+		5D84B6972B4472FE00239199 /* Generals */ = {
+			isa = PBXGroup;
+			children = (
+				5D84B6932B443DA600239199 /* DataStorage.swift */,
+				5DF902B42B28734900D990E6 /* GeneralConstants.swift */,
+				5D84B69C2B44757900239199 /* CustomViews */,
+			);
+			path = Generals;
+			sourceTree = "<group>";
+		};
+		5D84B69C2B44757900239199 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				5D84B6952B44701C00239199 /* CustomButton.swift */,
+				5D84B69A2B44756C00239199 /* CustomLabel.swift */,
+				5D84B6982B4473F900239199 /* CustomBarriers.swift */,
+				5D84B69D2B44774300239199 /* CustomImageView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,21 +235,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DE3E1402B18CBC000E14AE6 /* RecordsModel.swift in Sources */,
 				5DF902B72B2874DE00D990E6 /* StartView.swift in Sources */,
+				5D84B69E2B44774300239199 /* CustomImageView.swift in Sources */,
 				5D618F852B0BE7D600E8BF24 /* RecordsViewController.swift in Sources */,
 				5D618F6B2B0BE48B00E8BF24 /* StartViewController.swift in Sources */,
 				5DE3E1422B18CD1100E14AE6 /* RecordCell.swift in Sources */,
+				5D84B6992B4473F900239199 /* CustomBarriers.swift in Sources */,
+				5D84B69B2B44756C00239199 /* CustomLabel.swift in Sources */,
+				5D84B6962B44701C00239199 /* CustomButton.swift in Sources */,
 				5DA5F4E22B2A30E200B0DBB4 /* RaceModel.swift in Sources */,
 				5DF902B52B28734900D990E6 /* GeneralConstants.swift in Sources */,
 				5DF902B92B2878D900D990E6 /* RaceView.swift in Sources */,
 				5D618F812B0BE74800E8BF24 /* RaceViewController.swift in Sources */,
 				5D618F672B0BE48B00E8BF24 /* AppDelegate.swift in Sources */,
 				5D618F692B0BE48B00E8BF24 /* SceneDelegate.swift in Sources */,
+				5D84B6942B443DA600239199 /* DataStorage.swift in Sources */,
 				5D618F832B0BE7A100E8BF24 /* SettingsViewController.swift in Sources */,
 				5DF902BD2B28B0AC00D990E6 /* SettingModel.swift in Sources */,
 				5DF902BB2B28AB7C00D990E6 /* SettingsView.swift in Sources */,
-				5DF902C32B28DEA400D990E6 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
