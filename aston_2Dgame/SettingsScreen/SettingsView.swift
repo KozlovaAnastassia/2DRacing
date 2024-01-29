@@ -11,44 +11,29 @@ private extension String {
     static let nameLabelText = "Player name:"
     static let textFieldPlaceholder = "Enter name of player"
     static let levelLabelText = "Select level:"
-    static let buttonStartGameTitle = "Save & star Game"
+    static let buttonStartGameTitle = "Save & start game"
     static let buttonResetTitle = "Reset"
 }
 
 private extension CGFloat {
     static let topOffset = 100.0
-    static let spaceAfterNameLabel = 10.0
-    static let spaceAfterTextField = 80.0
+    static let spaceAfterLevelPicker = 100.0
     static let spaceAfterlevelLabel = 0.0
     static let imageSizeMultiplier = 2.0
 }
 
 final class SettingsView: UIView {
     
-    var avatarImage: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray
-        view.layer.cornerRadius = GeneralConstants.ImageSize.width
-        view.clipsToBounds = true
-        view.image = UIImage(named: GeneralConstants.ImageName.placeholder)
-        view.widthAnchor.constraint(equalToConstant: GeneralConstants.ImageSize.width * CGFloat.imageSizeMultiplier).isActive = true
-        view.heightAnchor.constraint(equalToConstant: GeneralConstants.ImageSize.height * CGFloat.imageSizeMultiplier).isActive = true
-        view.contentMode = .scaleToFill
-        return view
-    }()
+    var buttonStartGame = UIButton.standartButton(title: String.buttonStartGameTitle)
+    var buttonReset = UIButton.standartButton(title: String.buttonResetTitle)
+    
+    var levelLabel = UILabel.labelHeader(text: String.levelLabelText)
+    var nameLabel = UILabel.labelHeader(text: String.nameLabelText)
+    var avatarImage = UIImageView.avatarImage(height: GeneralConstants.ImageSize.height * CGFloat.imageSizeMultiplier)
     
     let imagePicker: UIImagePickerController = {
         let imagePicker = UIImagePickerController()
         return imagePicker
-    }()
-    
-    var nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = String.nameLabelText
-         label.font = GeneralConstants.Fonts.heavyFont
-        return label
     }()
     
     var textField: UITextField = {
@@ -59,42 +44,11 @@ final class SettingsView: UIView {
         return textField
     }()
     
-    var levelLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = String.levelLabelText
-        label.font = GeneralConstants.Fonts.heavyFont
-        return label
-    }()
-    
     var levelPicker: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
         return picker
     }()
-    
-    var buttonStartGame: UIButton = {
-       let button = UIButton()
-        button.setTitle(String.buttonStartGameTitle, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: GeneralConstants.ButtonSize.width).isActive = true
-        button.heightAnchor.constraint(equalToConstant: GeneralConstants.ButtonSize.height).isActive = true
-        button.backgroundColor = .blue
-        button.setTitleColor(.blue, for: .highlighted)
-        return button
-    }()
-     
-     
-    var buttonReset: UIButton = {
-        let button = UIButton()
-         button.setTitle(String.buttonResetTitle, for: .normal)
-         button.translatesAutoresizingMaskIntoConstraints = false
-         button.widthAnchor.constraint(equalToConstant: GeneralConstants.ButtonSize.width).isActive = true
-         button.heightAnchor.constraint(equalToConstant: GeneralConstants.ButtonSize.height).isActive = true
-         button.backgroundColor = .blue
-         button.setTitleColor(.blue, for: .highlighted)
-         return button
-     }()
      
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
@@ -110,10 +64,9 @@ final class SettingsView: UIView {
         stack.addArrangedSubview(levelPicker)
         stack.addArrangedSubview(buttonStartGame)
         stack.addArrangedSubview(buttonReset)
-        
-        stack.setCustomSpacing(CGFloat.spaceAfterNameLabel, after: nameLabel)
-        stack.setCustomSpacing(CGFloat.spaceAfterTextField, after: textField)
+    
         stack.setCustomSpacing(CGFloat.spaceAfterlevelLabel, after: levelLabel)
+        stack.setCustomSpacing(CGFloat.spaceAfterLevelPicker, after: levelPicker)
         
         return stack
     }()

@@ -21,55 +21,18 @@ private extension CGFloat {
     static let barrierWightDividerSubtrahend = 5.0
     
     static let carViewHeightMultiplier = 1.7
-    static let scoreLableFontSize = 24.0
     
     static let scoreLabelTopOffset = 50.0
 }
 
 final class RaceView: UIView {
     
-    var scoreLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: CGFloat.scoreLableFontSize, weight: .heavy)
-        return label
-    }()
-
-    var carView: UIView = {
-         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .magenta
-        return view
-    }()
-    
-    var barrierViewRed: UIView = {
-          let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
-        return view
-    }()
-
-    var barrierViewGreen: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .green
-        return view
-    }()
-    
-    var barrierViewBlue: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .cyan
-        return view
-    }()
-    
-    var barrierViewOrange: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .orange
-        return view
-    }()
+    var carView = UIView.barrier(color: .magenta)
+    var barrierViewRed = UIView.barrier(color: .red)
+    var barrierViewGreen = UIView.barrier(color: .green)
+    var barrierViewBlue = UIView.barrier(color: .blue)
+    var barrierViewOrange = UIView.barrier(color: .orange)
+    var scoreLabel = UILabel.labelScore(font: GeneralConstants.Fonts.scoreFont)
     
     var bgFirst: UIImageView = {
         let image = UIImageView()
@@ -112,7 +75,6 @@ final class RaceView: UIView {
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.scoreLabelTopOffset),
             scoreLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
         ])
         
         NSLayoutConstraint.activate([
@@ -123,7 +85,6 @@ final class RaceView: UIView {
             bgSecond.topAnchor.constraint(equalTo: bottomAnchor),
             bgSecond.leadingAnchor.constraint(equalTo: leadingAnchor),
             bgSecond.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
         ])
     }
     

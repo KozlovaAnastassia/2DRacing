@@ -26,6 +26,7 @@ struct RaceModel {
     var score: Double
     var randomX: Int
     var gameLevel: String
+    var model = SettingModel()
     
     var isStart = true
     var isGameFinished = false
@@ -59,5 +60,13 @@ struct RaceModel {
                 self.score += Double.scoreConstantAddition
             }
         }
+    
+    mutating func saveScore() {
+        if let id = DataStorage(model: model).checkId() {
+            if let  lastStrucat = DataStorage(model: model).getData(currentCountOfPlayers: id) {
+                DataStorage(model: lastStrucat).saveData(id: id, score: score, image: lastStrucat.image ?? Data())
+            }
+        }
+    }
     
 }

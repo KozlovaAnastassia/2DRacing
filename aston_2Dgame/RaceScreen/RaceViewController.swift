@@ -39,11 +39,9 @@ protocol RaceViewControllerDelegate: AnyObject {
 
 final class RaceViewController: UIViewController, UIScrollViewDelegate {
     
-    private let recordVC = RecordsViewController()
     private let raceView = RaceView()
     private var model: RaceModel
     private var timer: Timer?
-    weak var delegate: RaceViewControllerDelegate?
     
     init(gameLevel: String) {
         self.model = RaceModel(gameLevel: gameLevel)
@@ -64,7 +62,6 @@ final class RaceViewController: UIViewController, UIScrollViewDelegate {
         setPanGesture()
         model.defineSpeed()
         setItemBar()
-        self.delegate = recordVC
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -160,8 +157,7 @@ final class RaceViewController: UIViewController, UIScrollViewDelegate {
         raceView.barrierViewBlue.layer.removeAllAnimations()
         raceView.barrierViewGreen.layer.removeAllAnimations()
         raceView.barrierViewOrange.layer.removeAllAnimations()
-        
-        delegate?.senData(data: model.score)
+        model.saveScore()
     }
     
     private func gameRestart() {
