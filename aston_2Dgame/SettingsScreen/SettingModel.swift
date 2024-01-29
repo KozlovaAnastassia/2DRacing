@@ -8,11 +8,12 @@
 import UIKit
 
 
-struct SettingModel {
+struct SettingModel: Codable {
     var currentLevel: String?
     var name: String?
-    var image: UIImage?
+    var image: Data?
     var id: Int?
+    var score: Double?
     
     let levelsOfgame = LevelsOfgame.allCases.map { "\($0)" }
 }

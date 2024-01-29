@@ -19,7 +19,7 @@ private extension String {
 
 private extension Double {
     static let unvisibleSpeed = 0.0
-    static let timerInterval = 1.0
+    static let timerInterval = 0.9
     
     static let bgDuration = 7.0
     static let bgDelay = 3.0
@@ -39,11 +39,18 @@ protocol RaceViewControllerDelegate: AnyObject {
 
 final class RaceViewController: UIViewController, UIScrollViewDelegate {
     
-    private let recordVC = RecordsViewController()
     private let raceView = RaceView()
     private var model: RaceModel
     private var timer: Timer?
-    weak var delegate: RaceViewControllerDelegate?
+    
+    init(gameLevel: String) {
+        self.model = RaceModel(gameLevel: gameLevel)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError(GeneralConstants.Errors.initError)
+    }
     
     override func loadView() {
         view = raceView
@@ -55,18 +62,16 @@ final class RaceViewController: UIViewController, UIScrollViewDelegate {
         setPanGesture()
         model.defineSpeed()
         setItemBar()
-        self.delegate = recordVC
     }
     
     override func viewWillAppear(_ animated: Bool) {
         moveBgDown()
+        startTimer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         raceView.adjustCarViewFrame()
         moveDown()
-        startTimer()
-       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,16 +79,6 @@ final class RaceViewController: UIViewController, UIScrollViewDelegate {
         raceView.bgFirst.layer.removeAllAnimations()
         raceView.bgSecond.layer.removeAllAnimations()
     }
-
-    init(gameLevel: String) {
-        self.model = RaceModel(gameLevel: gameLevel)
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError(GeneralConstants.Errors.initError)
-    }
-    
     
     @objc func backToRootController() {
          navigationController?.popToRootViewController(animated: true)
@@ -162,8 +157,7 @@ final class RaceViewController: UIViewController, UIScrollViewDelegate {
         raceView.barrierViewBlue.layer.removeAllAnimations()
         raceView.barrierViewGreen.layer.removeAllAnimations()
         raceView.barrierViewOrange.layer.removeAllAnimations()
-        
-        delegate?.senData(data: model.score)
+        model.saveScore()
     }
     
     private func gameRestart() {
@@ -176,12 +170,15 @@ final class RaceViewController: UIViewController, UIScrollViewDelegate {
     
     
     private func setAlertFinishGame() {
-        let alert = UIAlertController(title: String.alertTitle, message: "\(String.alertMessage) \(model.score)", preferredStyle: .alert)
+        let alert = UIAlertController(title: String.alertTitle,
+                                      message: "\(String.alertMessage) \(model.score)",
+                                      preferredStyle: .alert)
         let actionRestart = UIAlertAction(title: String.actionRestartTitle, style: .default) { _ in
             self.gameRestart()
         }
         
-        let actionRecordsTable = UIAlertAction(title: String.recordsTableTitle, style: .default) { _ in
+        let actionRecordsTable = UIAlertAction(title: String.recordsTableTitle,
+                                               style: .default) { _ in
             self.navigationController?.pushViewController(RecordsViewController(), animated: true)
         }
         

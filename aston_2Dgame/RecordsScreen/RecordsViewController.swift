@@ -17,7 +17,8 @@ private extension CGFloat {
 
 final class RecordsViewController: UITableViewController {
 
-    private var recordsData = [RecordModel]()
+    private var recordsData = [SettingModel]()
+    private var model = SettingModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +41,14 @@ final class RecordsViewController: UITableViewController {
     }
     
     private func getDataFromUserDefault() {
-        if let currentCountOfPlayers = UserDefaults.standard.object(forKey: GeneralConstants.UDKeys.id) as? Int {
-            for i in 0...currentCountOfPlayers {
-                if let data = UserDefaults.standard.data(forKey: "\(i)") {
-                    do {
-                        let decodedStruct = try JSONDecoder().decode(RecordModel.self, from: data)
-                        recordsData.append(decodedStruct)
-                    } catch {
-                        print("\(error.localizedDescription)")
-                    }
+        if let id = DataStorage(model: model).checkId() {
+            for i in Int.zero...id {
+                if let storageModel = DataStorage(model: model).getData(currentCountOfPlayers: i) {
+                    recordsData.append(storageModel)
                 }
             }
-            recordsData.sort(by: {Double($0.score) ?? Double() > Double($1.score) ?? Double()})
-        }
+            recordsData.sort(by: {Double($0.score ?? Double()) > Double($1.score ?? Double()) })
+       }
     }
 
 }
@@ -80,35 +76,3 @@ extension RecordsViewController {
     }
 }
 
-extension RecordsViewController: SettingsViewControllerDelegate {
-    func didReceiveData(name: String, image: Data, id: Int) {
-        do {
-            try StorageManager().saveImage(UIImage(data: image) ?? UIImage(), name: name)
-        }
-        catch {
-            print("\(error.localizedDescription)")
-        }
-        
-        UserDefaults.standard.set(name, forKey: GeneralConstants.UDKeys.name)
-        if let currentCountOfPlayers = UserDefaults.standard.object(forKey: GeneralConstants.UDKeys.id) as? Int {
-            let newNum = currentCountOfPlayers + 1
-            UserDefaults.standard.set(newNum, forKey: GeneralConstants.UDKeys.id)
-        } else {
-            UserDefaults.standard.set(0, forKey: GeneralConstants.UDKeys.id)
-        }
-    }
-}
-    
-extension RecordsViewController: RaceViewControllerDelegate {
-    func senData(data: Double) {
-        
-        if let savedNumber = UserDefaults.standard.object(forKey: GeneralConstants.UDKeys.id) as? Int {
-            if let lastSavedPlayer = UserDefaults.standard.string(forKey: GeneralConstants.UDKeys.name) {
-                let player = RecordModel(id: savedNumber, name: lastSavedPlayer, score: String(data))
-                    if let encoded = try? JSONEncoder().encode(player) {
-                        UserDefaults.standard.set(encoded, forKey: "\(savedNumber)")
-                    }
-            }
-        }
-    }
-}

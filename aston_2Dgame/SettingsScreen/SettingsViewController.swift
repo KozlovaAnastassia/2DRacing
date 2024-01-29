@@ -15,7 +15,7 @@ private extension String {
     static let actionStartGame = "Start the game anyway"
     static let alertAddImage = "Add image"
     static let actionPhoto = "Photos"
-    static let actionCancel = "Cansel"
+    static let actionCancel = "Cancel"
 }
 
 private extension CGFloat {
@@ -27,18 +27,10 @@ private extension Int {
     static let numberOfComponents = 1
 }
 
-
-protocol SettingsViewControllerDelegate: AnyObject {
-    func  didReceiveData(name: String, image: Data, id: Int)
-}
-
 final class SettingsViewController: UIViewController {
     
      private var model = SettingModel()
      private let settingsView = SettingsView()
-     private let recordVC = RecordsViewController()
-    
-     weak var delegate: SettingsViewControllerDelegate?
     
      override func loadView() {
          view = settingsView
@@ -54,14 +46,21 @@ final class SettingsViewController: UIViewController {
         setDelegates()
         setTapGesture()
         setNavigationItem()
-        getDataFromUserData()
+        
+        DispatchQueue.main.async {
+            self.getDataFromUserData()
+        }
     }
-     
+    
      @objc func pressButtonStartGame() {
-         if let image = model.image, let name = model.name, let currentLevel = model.currentLevel {
-             delegate?.didReceiveData(name: name, image: image.pngData() ?? Data(), id: model.id ?? Int())
-             UserDefaults.standard.set(currentLevel, forKey: GeneralConstants.UDKeys.currentLevel)
-             navigationController?.pushViewController(RaceViewController(gameLevel: currentLevel), animated: true)
+         if model.image != nil && model.name != nil {
+             var newId = Int.zero
+             if let savedNumber = DataStorage(model: model).checkId() {
+                  newId =  savedNumber + 1
+             }
+             DataStorage(model: model).saveData(id: newId, score: GeneralConstants.Defaults.score, image: (model.image ?? Data()))
+             
+             navigationController?.pushViewController(RaceViewController(gameLevel: model.currentLevel ?? "\(LevelsOfgame.easy)"), animated: true)
          } else {
              setAlertNoData()
              settingsView.textField.isUserInteractionEnabled = true
@@ -111,20 +110,17 @@ final class SettingsViewController: UIViewController {
      }
      
      private func getDataFromUserData() {
-        if let personId = UserDefaults.standard.object(forKey: GeneralConstants.UDKeys.id) as? Int {
+         if let id =  DataStorage(model: model).checkId() {
+             if let storageModel = DataStorage(model: model).getData(currentCountOfPlayers: id) {
             settingsView.textField.isUserInteractionEnabled = false
             settingsView.avatarImage.isUserInteractionEnabled = false
-            
-            model.name = UserDefaults.standard.string(forKey: GeneralConstants.UDKeys.name)
-            model.id = personId
-            model.image =  StorageManager().getImage(model.name ?? String())
-            
-            settingsView.avatarImage.image = model.image
-            settingsView.textField.attributedPlaceholder = getCustomPlaceholder(placeholderName:  "\(model.name ?? String())",
+            settingsView.avatarImage.image = UIImage(data: storageModel.image ?? Data())
+            settingsView.textField.attributedPlaceholder = getCustomPlaceholder(placeholderName:  "\(storageModel.name ?? String())",
                                                                                 color: UIColor.black,
-                                                                                fontSize: CGFloat.textFieldPlaceholderFontSize )
-        } else {
-            resetSettings()
+                                                                                fontSize: CGFloat.textFieldPlaceholderFontSize)
+             }
+         } else {
+             resetSettings()
         }
      }
      
@@ -141,7 +137,6 @@ final class SettingsViewController: UIViewController {
         settingsView.levelPicker.delegate = self
         settingsView.imagePicker.delegate = self
         settingsView.textField.delegate = self
-        self.delegate = recordVC
     }
     
      private func setTapGesture() {
@@ -163,7 +158,6 @@ final class SettingsViewController: UIViewController {
          present(alert, animated: true)
      }
 }
-
 
 extension SettingsViewController: UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -193,7 +187,7 @@ extension SettingsViewController:  UIImagePickerControllerDelegate,
         if let selectedImage = info[.editedImage] as? UIImage {
             
             settingsView.avatarImage.image = selectedImage
-            model.image = selectedImage
+            model.image = selectedImage.pngData()
         }
         dismiss(animated: true, completion: nil)
     }

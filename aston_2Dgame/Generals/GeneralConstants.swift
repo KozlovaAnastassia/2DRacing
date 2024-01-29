@@ -28,7 +28,10 @@ enum Diraction {
      
      enum ImageSize {
          static let height: CGFloat = 60
-         static let width: CGFloat = 60
+     }
+     
+     enum Defaults {
+         static let score: Double = 0.0
      }
      
      enum UDKeys {
@@ -49,7 +52,8 @@ enum Diraction {
      }
      
      enum Fonts {
-         static let heavyFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
+         static let heavyFont = UIFont.systemFont(ofSize: 20, weight: .heavy)
+         static let scoreFont = UIFont.systemFont(ofSize: 30, weight: .heavy)
      }
      
      enum Colors {

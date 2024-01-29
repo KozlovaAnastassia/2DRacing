@@ -9,38 +9,15 @@ import UIKit
 
 private extension CGFloat {
     static let stackSpacing = 60.0
-    static let cornerRadiusMultiplier = 2.0
 }
 
 final class RecordCell: UITableViewCell {
     
     static var identifier: String {"\(Self.self)"}
     
-    private var avatarImage: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = GeneralConstants.Colors.gray
-        view.layer.cornerRadius = GeneralConstants.ImageSize.width/CGFloat.cornerRadiusMultiplier
-        view.clipsToBounds = true
-        view.widthAnchor.constraint(equalToConstant: GeneralConstants.ImageSize.width).isActive = true
-        view.heightAnchor.constraint(equalToConstant: GeneralConstants.ImageSize.height).isActive = true
-        view.contentMode = .scaleToFill
-        return view
-    }()
-    
-    private var nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = GeneralConstants.Fonts.heavyFont
-        return label
-    }()
-    
-    private var scoreLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = GeneralConstants.Fonts.heavyFont
-        return label
-    }()
+    private var nameLabel = UILabel.labelHeader(text: "")
+    private var scoreLabel = UILabel.labelHeader(text: "")
+    private var avatarImage = UIImageView.avatarImage(height: GeneralConstants.ImageSize.height)
     
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
@@ -85,10 +62,11 @@ final class RecordCell: UITableViewCell {
          ])
      }
     
-    
-    func configure(_ model: RecordModel) {
+    func configure(_ model: SettingModel) {
         nameLabel.text = model.name
-        scoreLabel.text = model.score
-        avatarImage.image = StorageManager().getImage(model.name)
+        avatarImage.image = UIImage(data: model.image ?? Data())
+        if let score = model.score {
+            scoreLabel.text = String(score)
+        }
    }
 }
